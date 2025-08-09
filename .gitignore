@@ -1,0 +1,18 @@
+﻿# Build outputs
+bin/
+obj/
+publish/
+*.log
+
+# VS/VSCode
+.vscode/
+.vs/
+
+# Installer outputs
+*.iss.tmp
+*_Setup*.exe
+InnoSetup-*.log
+
+# OS
+.DS_Store
+Thumbs.db

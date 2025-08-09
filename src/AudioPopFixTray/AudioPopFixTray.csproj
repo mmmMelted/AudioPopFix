@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- WinForms tray app -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+
+    <!-- Nice-to-haves -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Embed app icon -->
+    <ApplicationIcon>Assets\AudioPopFix_app.ico</ApplicationIcon>
+
+    <!-- Version  -->
+    <Version>1.2.0</Version>
+    <AssemblyTitle>AudioPopFix Tray</AssemblyTitle>
+    <Company>You</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
+
+  <!-- Ensures the icon file is included in the project -->
+  <ItemGroup>
+    <None Include="Assets\AudioPopFix_app.ico" />
+  </ItemGroup>
+</Project>
