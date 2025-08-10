@@ -22,12 +22,32 @@ namespace AudioPopFixTray
 
             // 48k stereo silence to match common system rate
             var format = WaveFormat.CreateIeeeFloatWaveFormat(48000, 2);
-            _source = new SilenceProvider(format); // SilenceProvider already implements IWaveProvider
+            _source = new SilenceProvider(format); // IWaveProvider
 
             _out = new WasapiOut(_device, AudioClientShareMode.Shared, true, 20);
             _out.Init(_source);
             _out.Play();
+
             Debug.WriteLine($"Started silent stream on: {_device.FriendlyName}");
+        }
+
+        public void Nudge()
+        {
+            try { _out?.Play(); } catch { /* ignore */ }
+        }
+
+        public void Restart()
+        {
+            try
+            {
+                // quick stop/start cycle to kick the driver after resume
+                Stop();
+                Start();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Restart failed for {_device.FriendlyName}: {ex}");
+            }
         }
 
         public void Stop()
